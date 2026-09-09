@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: var(--sc-font-family);
+    font-size: var(--sc-font-base);
+    line-height: 1.3;
+    color: var(--sc-shade-darkest);
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex; /* sticky footer: footer stays at the bottom when content is short */
+    flex-direction: column;
+  }
+
+  main {
+    flex-grow: 1; /* sticky footer, paired with body's flex column above */
+  }
+
+  h1, h2, h3, h4, h5 {
+    margin: 0 0 var(--sc-spacing-small);
+    font-weight: var(--sc-font-bold);
+  }
+
+  h1 {
+    font-size: var(--sc-font-xlarge);
+  }
+  @media (min-width: theme(--breakpoint-md, 768px)) {
+    h1 {
+      font-size: var(--sc-font-xxlarge);
+      margin-bottom: var(--sc-spacing-base);
+    }
+  }
+
+  h2 {
+    font-size: var(--sc-font-large);
+  }
+  @media (min-width: theme(--breakpoint-md, 768px)) {
+    h2 {
+      font-size: var(--sc-font-xlarge);
+    }
+  }
+
+  h3 {
+    font-size: var(--sc-font-large);
+  }
+
+  h4 {
+    font-size: var(--sc-font-medium);
+  }
+
+  h5 {
+    font-size: var(--sc-font-small);
+    text-transform: uppercase;
+    color: var(--sc-shade-dark);
+  }
+
+  strong {
+    font-weight: var(--sc-font-bold);
+  }
+
+  p {
+    margin: 0 0 var(--sc-spacing-base);
+  }
+
+  small {
+    font-size: var(--sc-font-small);
+  }
+
+  ::placeholder {
+    color: rgb(0 0 0 / 45%);
+  }
+
+  address {
+    font-style: normal;
+  }
+
+  label {
+    display: block;
+    margin-bottom: var(--sc-spacing-small);
+  }
+
+  svg {
+    fill: currentColor;
+  }
+
+  button {
+    /* Preflight resets font-inheritance/border-radius/background on buttons, but not
+       these — ported from base/mixins/resets.scss's reset-button-styles mixin, which
+       button.scss used to include.
+       NOTE: `outline: none` here removes the native focus ring with no visible
+       replacement — kept to preserve current behavior exactly (this change is meant to
+       be a like-for-like swap, not a redesign), but it's a real accessibility gap
+       worth a dedicated follow-up (e.g. a visible `focus-visible` treatment) rather
+       than carrying it forward indefinitely. */
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: currentColor;
+    line-height: inherit;
+    text-align: left;
+  }
+
+  fieldset {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  hr {
+    border: none;
+    height: 1px;
+    background: var(--sc-shade-lighter);
+    margin: var(--sc-spacing-base) 0;
+  }
+
+  menu {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+    transition: 0.2s color ease;
+  }
+  a:hover:not([class]),
+  a:focus:not([class]) {
+    color: hsl(var(--sc-color-primary-h) var(--sc-color-primary-s) var(--sc-color-primary-l));
+  }
+}
