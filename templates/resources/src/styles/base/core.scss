@@ -38,23 +38,9 @@ $core_override: () !default;
 @import 'base/settings/widths';
 @import 'base/settings/vertical-rhythm';
 
-// Elements
 
-@import 'base/elements/address';
-@import 'base/elements/all';
-@import 'base/elements/anchor';
-@import 'base/elements/body';
-@import 'base/elements/button';
 @import 'base/elements/code';
 @import 'base/elements/dl';
-@import 'base/elements/form';
-@import 'base/elements/hr';
-@import 'base/elements/img';
-@import 'base/elements/label';
-@import 'base/elements/menu';
-@import 'base/elements/paragraph';
-@import 'base/elements/svg';
-@import 'base/elements/typography';
 
 // Structural
 
