@@ -1,5 +1,33 @@
 @import "tailwindcss";
 
+@source "../../../../**/*.liquid";
+
+/**
+ * Breakpoints — direct port of base/settings/breakpoints.scss's real values. Without
+ * this, Tailwind's responsive prefixes (sm:, md:, lg:, xl:, 2xl:) silently fall back to
+ * Tailwind's own defaults (640/768/1024/1280/1536), which only coincidentally matches
+ * this theme's "medium" (768px) and mismatches everything else.
+ */
+@theme {
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1400px;
+  --breakpoint-2xl: 1700px;
+}
+
+/**
+ * Per-component override tokens preserved from deleted SCSS files (header.scss,
+ * navbar.scss) so a merchant's global_css can still override them by the same names —
+ * only the mechanism producing the header/navbar's own styling changed, not this
+ * override surface.
+ */
+:root {
+  --sc-header-bg: white;
+  --sc-header-color: var(--sc-shade-darkest);
+  --sc-navbar-bg: transparent;
+}
+
 @layer base {
   body {
     font-family: var(--sc-font-family);

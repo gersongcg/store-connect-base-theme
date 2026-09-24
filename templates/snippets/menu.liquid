@@ -1,12 +1,25 @@
+{%- liquid 
+    default set_dropdown: false
+    default is_header_menu: false
+    if menu.identifier == current_store.header_menu.identifier
+      assign is_header_menu = true
+      unless menu.style_classes contains 'dropdown'
+        assign set_dropdown = true
+      endunless
+    endif
+%}
+
 {%- if menu.menu_items.size > 0 %}
   {%- require "scripts/menu.js" -%}
 
-  <ul class="SC-Menu tier1{% if menu.style_classes %} {{ menu.style_classes }}{% endif %}" data-menu="{{ menu.identifier }}" id="SC-Menu-{{ menu.identifier }}">
-    {%- if menu.style_classes contains 'dropdown' %}
+  <ul class="SC-Menu tier1{% if menu.style_classes %} {{ menu.style_classes }}{% endif %}{% if set_dropdown %} dropdown{% endif %}" data-menu="{{ menu.identifier }}" id="SC-Menu-{{ menu.identifier }}">
+    
+    {%- is_header_menu %}
       <button class="SC-Menu_button sc-mb" data-menu-x type="button">
         Close
       </button>
     {%- endif %}
+
     {%- for menu_item in menu.menu_items %}
       {%- render "menu/menu_item",
                   parent_id: menu.identifier,
@@ -15,6 +28,8 @@
                   child_category_levels: 1 %}
     {%- endfor %}
 
+    {%- if is_header_menu %}
+      {%- render "header/dropdown/account" %}
       {%- if current_customer != blank %}
         <li class="SC-Menu_item tier1 sc-hide-medium-and-up" id="SC-MenuItem-account">
           <a href="{{ current_store.account_path }}" class="SC-Menu_link">
@@ -33,5 +48,6 @@
           </a>
         </li>
       {%- endif %}
+    {%- endif %}
   </ul>
 {%- endif %}

@@ -20,7 +20,8 @@
 @import 'theme/components/fieldset';
 @import 'theme/components/filters';
 @import 'theme/components/footer';
-@import 'theme/components/header';
+// header.scss removed — migrated to Tailwind utility classes directly on
+// templates/snippets/header.liquid.
 @import 'theme/components/heading-link';
 @import 'theme/components/icon';
 @import 'theme/components/image-link';
@@ -30,12 +31,12 @@
 @import 'theme/components/link';
 @import 'theme/components/liquid-components';
 @import 'theme/components/loader';
-@import 'theme/components/logo';
+// logo.scss and navbar.scss removed — both were used only by
+// templates/snippets/header.liquid, migrated to Tailwind utility classes there.
 @import 'theme/components/nav';
 @import 'theme/components/nav-link';
 @import 'theme/components/nav-list';
 @import 'theme/components/modal';
-@import 'theme/components/navbar';
 @import 'theme/components/notice';
 @import 'theme/components/option-card';
 @import 'theme/components/order-total';

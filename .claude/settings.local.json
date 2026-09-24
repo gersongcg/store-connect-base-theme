@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr edit:*)",
+      "Bash(git checkout:*)",
+      "Bash(awk -F: '{print $1}')",
+      "Bash(git merge:*)",
+      "Bash(git fetch:*)",
+      "Bash(git cherry-pick:*)",
+      "Bash(git restore:*)",
+      "Bash(rm templates/resources/dist/styles/styles.D-FiBVcP.css)",
+      "Bash(git:*)",
+      "Bash(xxd)",
+      "Bash(echo \"\")",
+      "Bash(npm install *)",
+      "Bash(rm -rf dist)",
+      "Bash(npx vite *)",
+      "Bash(npx @tailwindcss/cli -i src/styles/packs/theme-tailwind.css -o /tmp/cli-test.css)",
+      "Bash(asdf list *)",
+      "Bash(asdf current *)",
+      "Bash(asdf plugin *)",
+      "Read(//Users/gchavez/.asdf/installs/nodejs/**)"
+    ]
+  }
+}
