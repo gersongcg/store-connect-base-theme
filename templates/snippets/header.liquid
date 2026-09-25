@@ -5,59 +5,53 @@
     {%- require "scripts/menu.js" -%}
 
     {%- capture store_logo %}
-    <a href="{{ current_store.home_path }}" class="SC-Logo">
+    <a href="{{ current_store.home_path }}" class="sc-header__logo inline-block shrink-0 text-[0] py-[var(--sc-spacing-medium)]">
       {%- if current_store.logo != blank %}
-        <img src="{{ current_store.logo.url }}" class="SC-Logo_image">
+        <img src="{{ current_store.logo.large_url }}" class="sc-header__logo-image h-auto w-auto max-w-[150px] max-h-[50px] md:max-h-[60px]">
       {%- else %}
-        <svg class="SC-Placeholder" width="180px" viewBox="0 0 180 40">
+        <svg class="sc-header__logo-placeholder relative w-full fill-black/5" width="180px" viewBox="0 0 180 40">
           <rect width="100%" height="100%" rx="20"></rect>
         </svg>
       {%- endif %}
     </a>
     {%- endcapture %}
-    <header class="SC-Header" id="SC-Header">
+    <header class="sc-header sticky top-0 left-0 right-0 z-[3] bg-[var(--sc-header-bg)] text-[var(--sc-header-color)] shadow-md" id="sc-header" data-header>
       {%- render "header/geolocation" %}
-      <div class="SC-Header_inner">
+      <div class="sc-header__inner flex h-[70px] w-full items-center justify-between gap-[20px] px-[var(--sc-spacing-small)] sm:px-[var(--sc-spacing-medium)] md:px-[var(--sc-spacing-base)] lg:px-[var(--sc-spacing-large)]">
 
         {%- assign menu_identifier = current_store.header_menu | try: "identifier" | default: "header" %}
-        <div class="SC-Header_inner_left">
-          <button data-menu-init="{{ menu_identifier }}" class="SC-Icon SC-Icon-button SC-Icon-large sc-hide-medium-and-up" type="button">
-            {%- render "shared/icons/hamburger" %}
+        <div class="sc-header__inner-left flex h-full flex-none items-center justify-start">
+          <button data-menu-init="{{ menu_identifier }}" class="sc-header__toggle relative inline-flex h-[50px] w-[50px] items-center justify-center bg-transparent p-0 border-none outline-none cursor-pointer fill-current text-[0] [-webkit-tap-highlight-color:transparent] md:hidden" type="button">
+            {%- render "shared/icons/hamburger", style_class: "pointer-events-none h-[20px] w-[20px]" %}
           </button>
-          <div class="sc-hide-up-to-medium">
+          <div class="hidden md:block">
             {{ store_logo }}
           </div>
         </div>
 
-        <div class="SC-Header_inner_center">
-          <div class="sc-hide-medium-and-up">
-            {{ store_logo }}
-          </div>
-          <div class="sc-grow sc-hide-up-to-medium">
-            {%- render "header/search" %}
+        <div class="sc-header__navbar bg-transparent md:bg-[var(--sc-navbar-bg,transparent)] grow">
+          <div class="sc-header__navbar-inner flex items-center gap-[var(--sc-spacing-base)]">
+            {%- if current_store.header_menu != blank %}
+              {{ current_store.header_menu.render }}
+            {%- else %}
+              <ul class="SC-Menu dropdown tier1" id="SC-HeaderMenuPrimary" data-menu="header">
+                {%- render "header/menu" %}
+              </ul>
+            {%- endif %}
           </div>
         </div>
 
-        <div class="SC-Header_inner_right">
-          <ul class="SC-Menu tier1 end sc-justify-end" id="SC-HeaderMenuSecondary">
+        <div class="sc-header__inner-center flex shrink-0 max-w-[70%] items-center justify-center px-[var(--sc-spacing-base)] md:hidden">
+          <div>
+            {{ store_logo }}
+          </div>
+        </div>
+
+        <div class="sc-header__inner-right flex h-full flex-1 basis-0 items-center justify-end gap-[20px]">
+          <ul class="flex items-center justify-end gap-x-[40px]" id="SC-HeaderMenuSecondary">
             {%- render "header/dropdown/account" %}
             {%- component "cart-menu", reload: "sc.cart-updated sc.voucher-applied sc.voucher-removed" %}
           </ul>
-        </div>
-      </div>
-
-      <div class="SC-Navbar">
-        <div class="SC-Navbar_inner">
-          <div class="sc-hide-medium-and-up">
-            {%- render "header/search" %}
-          </div>
-          {%- if current_store.header_menu != blank %}
-            {{ current_store.header_menu.render }}
-          {%- else %}
-            <ul class="SC-Menu dropdown tier1" id="SC-HeaderMenuPrimary" data-menu="header">
-              {%- render "header/menu" %}
-            </ul>
-          {%- endif %}
         </div>
       </div>
     </header>
