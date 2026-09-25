@@ -14,7 +14,7 @@
 
   <ul class="SC-Menu tier1{% if menu.style_classes %} {{ menu.style_classes }}{% endif %}{% if set_dropdown %} dropdown{% endif %}" data-menu="{{ menu.identifier }}" id="SC-Menu-{{ menu.identifier }}">
     
-    {%- is_header_menu %}
+    {%- if is_header_menu %}
       <button class="SC-Menu_button sc-mb" data-menu-x type="button">
         Close
       </button>
