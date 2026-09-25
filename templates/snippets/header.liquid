@@ -7,7 +7,7 @@
     {%- capture store_logo %}
     <a href="{{ current_store.home_path }}" class="sc-header__logo inline-block shrink-0 text-[0] py-[var(--sc-spacing-medium)]">
       {%- if current_store.logo != blank %}
-        <img src="{{ current_store.logo.url }}" class="sc-header__logo-image h-auto w-auto max-w-[150px] max-h-[50px] md:max-h-[60px]">
+        <img src="{{ current_store.logo.large_url }}" class="sc-header__logo-image h-auto w-auto max-w-[150px] max-h-[50px] md:max-h-[60px]">
       {%- else %}
         <svg class="sc-header__logo-placeholder relative w-full fill-black/5" width="180px" viewBox="0 0 180 40">
           <rect width="100%" height="100%" rx="20"></rect>
